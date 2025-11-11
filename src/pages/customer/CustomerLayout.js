@@ -20,7 +20,8 @@ function CustomerLayout() {
 
         <nav style={{ display: 'grid', gap: '12px' }}>
           <NavLink
-            to="/customer/customeerdashboard"
+            to="/customer"
+            end
             style={({ isActive }) => ({
               display: 'block',
               padding: '12px 14px',

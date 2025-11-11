@@ -20,7 +20,8 @@ function StaffLayout() {
 
         <nav style={{ display: 'grid', gap: '12px' }}>
           <NavLink
-            to="/staff/staffdashboard"
+            to="/staff"
+            end
             style={({ isActive }) => ({
               display: 'block',
               padding: '12px 14px',

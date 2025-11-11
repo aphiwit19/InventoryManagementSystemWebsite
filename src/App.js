@@ -24,7 +24,7 @@ function App() {
     <Router>
       <div className="App">
         <Routes>
-          <Route path="/" element={<Navigate to="/staff" />} />
+          <Route path="/" element={<Navigate to="/admin" />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
           <Route path="/admin" element={<Adminlayout />}>
@@ -33,6 +33,7 @@ function App() {
             <Route path="addminorders" element={<AdminOrders />} />
             <Route path="add" element={<AdminAdd />} />
             <Route path="edit" element={<AdminEdit />} />
+            <Route path="edit/:id" element={<AdminEdit />} />
             <Route path="manageusers" element={<AdminManageUsers />} />
             <Route path="stockhistory" element={<AdminStockHistory />} />
           </Route>
