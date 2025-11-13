@@ -21,7 +21,8 @@ const localProvider = {
   // สร้างสินค้าใหม่และบันทึกลง localStorage
   async createProduct(data) {
     const items = JSON.parse(localStorage.getItem(localKey) || '[]');
-    const product = { id: Date.now(), ...data };
+    const q = Number(data.quantity) || 0;
+    const product = { id: Date.now(), peakQuantity: q, ...data };
     items.push(product);
     localStorage.setItem(localKey, JSON.stringify(items));
     return product;
@@ -31,7 +32,14 @@ const localProvider = {
     const items = JSON.parse(localStorage.getItem(localKey) || '[]');
     const idx = items.findIndex(p => String(p.id) === String(id));
     if (idx === -1) return null;
-    const updated = { ...items[idx], ...data };
+    const current = items[idx];
+    let updated = { ...current, ...data };
+    // อัปเดต peakQuantity ถ้ามีการเพิ่มจำนวนมากกว่าค่าสูงสุดเดิม
+    const nextQty = Number(updated.quantity);
+    const peak = Number(current.peakQuantity || current.quantity || 0);
+    if (Number.isFinite(nextQty) && nextQty > peak) {
+      updated = { ...updated, peakQuantity: nextQty };
+    }
     items[idx] = updated;
     localStorage.setItem(localKey, JSON.stringify(items));
     return updated;

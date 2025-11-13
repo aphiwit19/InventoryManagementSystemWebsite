@@ -1,10 +1,11 @@
 import React from 'react'
 import { NavLink, Outlet, useNavigate } from 'react-router-dom'
+import { logout } from '../../mocktest/auth'
 
 function CustomerLayout() {
   const navigate = useNavigate();
   return (
-    <div style={{ display: 'flex', minHeight: '100vh', backgroundColor: '#f5f5f5' }}>
+    <div style={{ display: 'flex', height: '100vh', backgroundColor: '#f5f5f5', padding: '8px ', alignItems: 'stretch', gap: '16px' }}>
       <aside
         style={{
           width: '280px',
@@ -13,7 +14,8 @@ function CustomerLayout() {
           boxShadow: '0 4px 12px rgba(0,0,0,0.08)',
           borderTopRightRadius: '12px',
           borderBottomRightRadius: '12px',
-          margin: '8px 0 8px 8px'
+          height: '100%',
+          boxSizing: 'border-box'
         }}
       >
         <h2 style={{ fontSize: '24px', marginBottom: '24px', color: '#222' }}>Customer Panel</h2>
@@ -26,10 +28,11 @@ function CustomerLayout() {
               display: 'block',
               padding: '12px 14px',
               borderRadius: '8px',
-              backgroundColor: isActive ? '#2e6dc1' : '#e9ecef',
+              backgroundColor: isActive ? '#2e6dc1' : '#d8dbdef8',
               color: isActive ? '#fff' : '#111',
               textDecoration: 'none',
               fontWeight: 600,
+              textAlign: 'center',
             })}
           >
             รายการสินค้า
@@ -41,10 +44,11 @@ function CustomerLayout() {
               display: 'block',
               padding: '12px 14px',
               borderRadius: '8px',
-              backgroundColor: isActive ? '#2e6dc1' : '#e9ecef',
+              backgroundColor: isActive ? '#2e6dc1' : '#d8dbdef8',
               color: isActive ? '#fff' : '#111',
               textDecoration: 'none',
               fontWeight: 600,
+              textAlign: 'center',
             })}
           >
             คำสั่งซื้อสินค้า
@@ -56,10 +60,11 @@ function CustomerLayout() {
               display: 'block',
               padding: '12px 14px',
               borderRadius: '8px',
-              backgroundColor: isActive ? '#2e6dc1' : '#e9ecef',
+              backgroundColor: isActive ? '#2e6dc1' : '#d8dbdef8',
               color: isActive ? '#fff' : '#111',
               textDecoration: 'none',
               fontWeight: 600,
+              textAlign: 'center',
             })}
           >
             ติดตามสถานะ
@@ -68,6 +73,7 @@ function CustomerLayout() {
         <button
           type="button"
           onClick={() => {
+            logout();
             navigate('/login');
           }}
           style={{
@@ -86,13 +92,19 @@ function CustomerLayout() {
         </button>
       </aside>
 
-      <main style={{ flex: 1, padding: '24px' }}>
+      <main style={{  flex: 1, padding: 0, height: '100%' }}>
         <div
           style={{
             backgroundColor: '#ffffff',
             borderRadius: '12px',
             padding: '24px',
-            boxShadow: '0 4px 12px rgba(0,0,0,0.06)'
+            boxShadow: '0 4px 12px rgba(0,0,0,0.06)',
+            height: '100%',
+            display: 'flex',
+            flexDirection: 'column',
+            minHeight: 0,
+            overflow: 'hidden',
+            boxSizing: 'border-box'
           }}
         >
           <Outlet />

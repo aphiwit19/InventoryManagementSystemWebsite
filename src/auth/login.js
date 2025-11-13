@@ -1,21 +1,41 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import { login as authLogin, getSession, seedUsers } from '../mocktest/auth';
 
 export default function Login() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const [error, setError] = useState('');
   const navigate = useNavigate();
+  
+  //จัดการเข้าสู่หน้าตาม role
+  useEffect(() => {
+    seedUsers();
+    const ses = getSession();
+    if (ses && ses.role) {
+      if (ses.role === 'admin') navigate('/admin');
+      else if (ses.role === 'staff') navigate('/staff');
+      else if (ses.role === 'customer') navigate('/customer');
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  //เข้าสู่ระบบไปหน้าแอดมินแดชบอด
   const handleSubmit = (e) => {
     e.preventDefault();
     setError('');
-    if (username.trim() && password.trim()) {
-      navigate('/admin');
-    } else {
+    if (!username.trim() || !password.trim()) {
       setError('Please enter username and password');
+      return;
     }
+    const ses = authLogin(username.trim(), password.trim());
+    if (!ses) {
+      setError('Invalid username or password');
+      return;
+    }
+    if (ses.role === 'admin') navigate('/admin');
+    else if (ses.role === 'staff') navigate('/staff');
+    else if (ses.role === 'customer') navigate('/customer');
+    else setError('Unknown role');
   };
 
   return (

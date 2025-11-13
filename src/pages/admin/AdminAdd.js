@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { createProduct } from '../../api/products';
+import './AdminAdd.css';
 
 function AdminAdd() {
   const [productName, setProductName] = useState('');
@@ -75,69 +76,70 @@ function AdminAdd() {
   };
 
   return (
-    <>
-      <div>แอดมิน</div>
-      <h1>เพิ่มสินค้า</h1>
-      <form onSubmit={handleSubmit}>
+    <div className="admin-add">
+      <h1>เพิ่มรายการสินค้าใหม่</h1>
+      <form onSubmit={handleSubmit} className="admin-add-form">
         <label>
           ชื่อสินค้า:
           <input
             type="text"
             value={productName}
             onChange={(event) => setProductName(event.target.value)}
+
           />
-          {errors.productName && <div style={{ color: 'red' }}>{errors.productName}</div>}
+          {errors.productName && <div className="field-error">{errors.productName}</div>}
         </label>
-        <br />
         <label>
           ราคา:
           <input
             type="number"
             value={productPrice}
             onChange={(event) => setProductPrice(event.target.value)}
+            min={0}
+            step="0.01"
           />
-          {errors.productPrice && <div style={{ color: 'red' }}>{errors.productPrice}</div>}
+          {errors.productPrice && <div className="field-error">{errors.productPrice}</div>}
         </label>
-        <br />
         <label>
           จำนวน:
           <input
             type="number"
             value={quantity}
             onChange={(event) => setQuantity(event.target.value)}
+            min={0}
+            step="1"
           />
-          {errors.quantity && <div style={{ color: 'red' }}>{errors.quantity}</div>}
+          {errors.quantity && <div className="field-error">{errors.quantity}</div>}
         </label>
-        <br />
         <label>
           คำอธิบายสินค้า:
           <textarea
             value={productDescription}
             onChange={(event) => setProductDescription(event.target.value)}
+            rows={4}
           />
-          {errors.productDescription && <div style={{ color: 'red' }}>{errors.productDescription}</div>}
+          {errors.productDescription && <div className="field-error">{errors.productDescription}</div>}
         </label>
-        <br />
         <label>
           ลิงก์รูปภาพ:
           <input
             type="url"
             value={imageUrl}
             onChange={(event) => setImageUrl(event.target.value)}
+
           />
-          {errors.imageUrl && <div style={{ color: 'red' }}>{errors.imageUrl}</div>}
+          {errors.imageUrl && <div className="field-error">{errors.imageUrl}</div>}
         </label>
-        <br />
         <label>
           ที่ตั้งสินค้า:
           <input
             type="text"
             value={location}
             onChange={(event) => setLocation(event.target.value)}
+
           />
-          {errors.location && <div style={{ color: 'red' }}>{errors.location}</div>}
+          {errors.location && <div className="field-error">{errors.location}</div>}
         </label>
-        <br />
         <label>
           วันที่สินค้าเข้า:
           <input
@@ -145,15 +147,14 @@ function AdminAdd() {
             value={dateAdded}
             onChange={(event) => setDateAdded(event.target.value)}
           />
-          {errors.dateAdded && <div style={{ color: 'red' }}>{errors.dateAdded}</div>}
+          {errors.dateAdded && <div className="field-error">{errors.dateAdded}</div>}
         </label>
-        <br />
-        <button type="submit">บันทึกสินค้า</button>
-        <button type="button" onClick={handleCancel}>
-          ยกเลิก
-        </button>
+        <div className="actions">
+          <button type="button" className="btn btn-ghost" onClick={handleCancel}>ยกเลิก</button>
+          <button type="submit" className="btn btn-primary">บันทึกสินค้า</button>
+        </div>
       </form>
-    </>
+    </div>
   );
 }
 

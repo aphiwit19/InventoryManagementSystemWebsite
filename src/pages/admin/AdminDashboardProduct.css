@@ -1,0 +1,44 @@
+.table-products th,
+.table-products td {
+  border: 1px solid #e5e7eb;
+  padding: 8px 10px;
+  text-align: left;
+  vertical-align: middle;
+}
+
+.table-products thead th {
+  position: sticky;
+  top: 0;
+  background: #2e6dc1;
+  color: #fff;
+  z-index: 1;
+  font-weight: 600;
+  box-shadow: 0 1px 0 #e5e7eb, 0 2px 8px rgba(0, 0, 0, 0.04); 
+}
+/* Table readability enhancements */
+.table-products tbody tr:nth-child(odd) {
+  background-color: #ffffff; /* แถวคี่ */
+}
+
+.table-products tbody tr:nth-child(even) {
+  background-color: #f0f0f0; /* แถวคู่ */
+}
+
+.table-products tbody tr:hover {
+  background: #eef2ff;
+  cursor: pointer;
+}
+
+/* Low stock badge */
+.low-stock-badge {
+  display: inline-block;
+  margin-left: 8px;
+  padding: 2px 8px;
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  color: #b45309;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+}
+

@@ -1,0 +1,88 @@
+.admin-edit {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.admin-edit h1 {
+  margin: 0 0 16px 0;
+}
+
+.admin-edit-form {
+  max-width: 900px;
+  margin: 0;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 12px;
+}
+
+.admin-edit-form label {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.admin-edit-form input,
+.admin-edit-form textarea {
+  border: 1px solid #e5e7eb;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-size: 14px;
+}
+
+.admin-edit-form input:focus,
+.admin-edit-form textarea:focus {
+  outline: none;
+  border-color: #2e6dc1;
+  box-shadow: 0 0 0 3px rgba(46,109,193,0.15);
+}
+
+.admin-edit-form textarea {
+  min-height: 100px;
+  resize: vertical;
+}
+
+.field-error {
+  grid-column: 2;
+  color: #dc2626;
+  font-size: 13px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 8px;
+}
+
+.btn {
+  border: none;
+  border-radius: 8px;
+  padding: 10px 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-primary {
+  background: #2e6dc1;
+  color: #fff;
+}
+
+.btn-primary:hover {
+  background: #2458a0;
+}
+
+.btn-ghost {
+  background: #e9ecef;
+  color: #111;
+}
+
+.btn-ghost:hover {
+  background: #dfe3e7;
+}
+
+@media (max-width: 640px) {
+  .admin-edit-form {
+    gap: 10px;
+  }
+}

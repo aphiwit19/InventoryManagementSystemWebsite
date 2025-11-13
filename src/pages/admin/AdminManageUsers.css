@@ -1,0 +1,108 @@
+ .manage-users {
+   padding: 16px;
+ }
+
+ .mu-title {
+   margin: 0 0 16px;
+   font-size: 1.5rem;
+   font-weight: 700;
+   color: #111827;
+ }
+
+ .mu-error {
+   margin-bottom: 12px;
+   color: #b00020;
+   background: #fde7ea;
+   border: 1px solid #f7c6cd;
+   padding: 10px 12px;
+   border-radius: 8px;
+ }
+
+ .mu-table-wrap {
+   overflow-x: auto;
+   background: #ffffff;
+   border-radius: 12px;
+   border: 1px solid #e5e7eb;
+   box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+ }
+
+ .mu-table {
+   width: 100%;
+   border-collapse: collapse;
+   min-width: 640px;
+ }
+
+ .mu-table thead th {
+   text-align: left;
+   padding: 12px 14px;
+   background: #2e6dc1;
+   color: #ffffff;
+   font-weight: 600;
+   border-bottom: 1px solid #e5e7eb;
+   
+ }
+
+ .mu-table tbody td {
+   padding: 12px 14px;
+   border-bottom: 1px solid #f3f4f6;
+   color: #111827;
+ }
+
+ .mu-table tbody tr:hover {
+   background: #fafafa;
+ }
+
+ .mu-badge {
+   display: inline-flex;
+   align-items: center;
+   gap: 6px;
+   padding: 4px 10px;
+   border-radius: 999px;
+   font-size: 0.8125rem;
+   font-weight: 600;
+   text-transform: capitalize;
+ }
+
+ .mu-badge--user {
+   background: #eff6ff;
+   color: #1d4ed8;
+   border: 1px solid #bfdbfe;
+ }
+
+ .mu-badge--staff {
+   background: #ecfdf5;
+   color: #047857;
+   border: 1px solid #a7f3d0;
+ }
+
+ .mu-badge--customer {
+   background: #fff7ed;
+   color: #c2410c;
+   border: 1px solid #fed7aa;
+ }
+
+ .mu-badge--admin {
+   background: #eef2ff;
+   color: #4338ca;
+   border: 1px solid #c7d2fe;
+ }
+
+ .mu-role-select {
+   padding: 8px 10px;
+   border-radius: 8px;
+   border: 1px solid #d1d5db;
+   background: #ffffff;
+   color: #111827;
+   outline: none;
+   transition: box-shadow 0.15s ease, border-color 0.15s ease;
+ }
+
+ .mu-role-select:focus {
+   border-color: #2563eb;
+   box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.15);
+ }
+
+ .mu-role-select:disabled {
+   opacity: 0.6;
+   cursor: not-allowed;
+ }

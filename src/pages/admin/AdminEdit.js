@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { useNavigate, useParams } from 'react-router-dom'
 import { getProduct, updateProduct } from '../../api/products'
+import './AdminEdit.css'
 
 function AdminEdit() {
   const navigate = useNavigate()
@@ -78,23 +79,23 @@ function AdminEdit() {
   }
 
   return (
-    <>
+    <div className="admin-edit">
       <h1>แก้ไขสินค้า</h1>
 
       {!id ? (
         <div>กรุณาเลือกสินค้าที่ต้องการแก้ไข</div>
       ) : (
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="admin-edit-form">
           <label>
             ชื่อสินค้า:
             <input
               type="text"
               value={form.productName}
               onChange={(e) => handleChange('productName', e.target.value)}
+              
             />
-            {errors.productName && <div style={{ color: 'red' }}>{errors.productName}</div>}
+            {errors.productName && <div className="field-error">{errors.productName}</div>}
           </label>
-          <br />
 
           <label>
             ราคา:
@@ -102,10 +103,12 @@ function AdminEdit() {
               type="number"
               value={form.productPrice}
               onChange={(e) => handleChange('productPrice', e.target.value)}
+              
+              min={0}
+              step="0.01"
             />
-            {errors.productPrice && <div style={{ color: 'red' }}>{errors.productPrice}</div>}
+            {errors.productPrice && <div className="field-error">{errors.productPrice}</div>}
           </label>
-          <br />
 
           <label>
             จำนวน:
@@ -113,20 +116,22 @@ function AdminEdit() {
               type="number"
               value={form.quantity}
               onChange={(e) => handleChange('quantity', e.target.value)}
+              
+              min={0}
+              step="1"
             />
-            {errors.quantity && <div style={{ color: 'red' }}>{errors.quantity}</div>}
+            {errors.quantity && <div className="field-error">{errors.quantity}</div>}
           </label>
-          <br />
 
           <label>
             คำอธิบายสินค้า:
             <textarea
               value={form.productDescription}
               onChange={(e) => handleChange('productDescription', e.target.value)}
+              rows={4}
             />
-            {errors.productDescription && <div style={{ color: 'red' }}>{errors.productDescription}</div>}
+            {errors.productDescription && <div className="field-error">{errors.productDescription}</div>}
           </label>
-          <br />
 
           <label>
             ลิงก์รูปภาพ:
@@ -135,20 +140,17 @@ function AdminEdit() {
               value={form.imageUrl}
               onChange={(e) => handleChange('imageUrl', e.target.value)}
             />
-            {errors.imageUrl && <div style={{ color: 'red' }}>{errors.imageUrl}</div>}
+            {errors.imageUrl && <div className="field-error">{errors.imageUrl}</div>}
           </label>
-          <br />
 
           <label>
             ที่ตั้งสินค้า:
             <input
               type="text"
               value={form.location}
-              onChange={(e) => handleChange('location', e.target.value)}
-            />
-            {errors.location && <div style={{ color: 'red' }}>{errors.location}</div>}
+              onChange={(e) => handleChange('location', e.target.value)}            />
+            {errors.location && <div className="field-error">{errors.location}</div>}
           </label>
-          <br />
 
           <label>
             วันที่สินค้าเข้า:
@@ -157,17 +159,16 @@ function AdminEdit() {
               value={form.dateAdded}
               onChange={(e) => handleChange('dateAdded', e.target.value)}
             />
-            {errors.dateAdded && <div style={{ color: 'red' }}>{errors.dateAdded}</div>}
+            {errors.dateAdded && <div className="field-error">{errors.dateAdded}</div>}
           </label>
-          <br />
 
-          <button type="submit">บันทึกการแก้ไข</button>
-          <button type="button" onClick={() => navigate(-1)} style={{ marginLeft: 8 }}>
-            ยกเลิก
-          </button>
+          <div className="actions">
+            <button type="button" className="btn btn-ghost" onClick={() => navigate(-1)}>ยกเลิก</button>
+            <button type="submit" className="btn btn-primary">บันทึกการแก้ไข</button>
+          </div>
         </form>
       )}
-    </>
+    </div>
   )
 }
 
